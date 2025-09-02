@@ -128,7 +128,7 @@ function retry() {
 	data.score = 0;
 	data.currentWord = words[Math.floor(Math.random()*words.length)];
 	document.getElementById("word").style = `filter: blur(0);`
-	document.getElementById("yourspelling").value = "";
+	document.getElementById("yourspelling").value = ""; // plz work 2
 }
 function update() {
 	document.getElementById("score").innerText = `Score: ${data.score}`

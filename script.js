@@ -130,8 +130,14 @@ function retry() {
 	document.getElementById("word").style = `filter: blur(0);`
 }
 function update() {
+	document.getElementById("score").innerText = `Score: ${data.score}`
 	document.getElementById("word").innerText = `Your word: ${data.currentWord}`
 }
+document.getElementById("yourspelling").addEventListener("keypress",function(e) {
+	if (e.keyCode == 13) {
+		isSpellingValid()
+	}
+});
 document.getElementById("enter").addEventListener("click",isSpellingValid);
 document.getElementById("retry").addEventListener("click",retry);
 setInterval(update,0)

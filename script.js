@@ -119,11 +119,11 @@ function isSpellingValid() {
 		document.getElementById("word").style = `filter: blur(${Math.sqrt(data.score)*0.5}px);` //plez work
 	} else {
 		document.getElementById("app").style = "display:none;";
-		document.getElementById("gameover").style = "display:inline;";
+		document.getElementById("gameover").style = "display:flex;";
 	}
 }
 function retry() {
-	document.getElementById("app").style = "display:inline;";
+	document.getElementById("app").style = "display:flex;";
 	document.getElementById("gameover").style = "display:none;";
 	data.score = 0;
 	data.currentWord = words[Math.floor(Math.random()*words.length)];

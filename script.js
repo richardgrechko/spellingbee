@@ -110,20 +110,21 @@ const data = {
 	currentWord: words[Math.floor(Math.random()*words.length)],
 	score: 0
 };
-document.getElementById("gameover").visible = false;
+document.getElementById("gameover").style = "display:none;";
 function isSpellingValid() {
 	if (document.getElementById("yourspelling").value.toLowerCase() == data.currentWord) {
 		data.currentWord = words[Math.floor(Math.random()*words.length)]
 		document.getElementById("yourspelling").value = "";
 		data.score++;
-		document.getElementById("word").style = `filter: blur(${Math.sqrt(data.score)*4}px);`
+		document.getElementById("word").style = `filter: blur(${Math.sqrt(data.score)*0.5}px);`
 	} else {
-		document.getElementById("app").visible = false;
+		document.getElementById("app").style = "display:none;";
+		document.getElementById("gameover").style = "display:inline;";
 	}
 }
 function retry() {
-	document.getElementById("gameover").visible = false;
-	document.getElementById("app").visible = true;
+	document.getElementById("app").style = "display:inline;";
+	document.getElementById("gameover").style = "display:none;";
 	data.score = 0;
 	data.currentWord = words[Math.floor(Math.random()*words.length)];
 	document.getElementById("word").style = `filter: blur(0);`

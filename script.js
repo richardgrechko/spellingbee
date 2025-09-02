@@ -116,7 +116,7 @@ function isSpellingValid() {
 		data.currentWord = words[Math.floor(Math.random()*words.length)]
 		document.getElementById("yourspelling").value = "";
 		data.score++;
-		document.getElementById("word").style = `filter: blur(${Math.sqrt(data.score)*0.5}px);` //plez work
+		document.getElementById("word").style = `filter: blur(${Math.sqrt(data.score)*0.5}px);`
 	} else {
 		document.getElementById("app").style = "display:none;";
 		document.getElementById("gameover").style = "display:flex;";

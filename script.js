@@ -128,11 +128,16 @@ function retry() {
 	data.score = 0;
 	data.currentWord = words[Math.floor(Math.random()*words.length)];
 	document.getElementById("word").style = `filter: blur(0);`
-	document.getElementById("yourspelling").value = ""; // plz work 2
+	document.getElementById("yourspelling").value = "";
 }
 function update() {
 	document.getElementById("score").innerText = `Score: ${data.score}`
 	document.getElementById("word").innerText = `Your word: ${data.currentWord}`
+	if (document.getElementById("yourspelling").value == "") {
+		document.getElementById("enter").disabled = true
+	} else {
+		document.getElementById("enter").disabled = false
+	}
 }
 document.getElementById("yourspelling").addEventListener("keypress",function(e) {
 	if (e.keyCode == 13) {

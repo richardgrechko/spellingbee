@@ -1,5 +1,6 @@
 try {
-	fetch("words.txt").then(x=>x.text().split(",")).then(words=>{
+	fetch("words.txt").then(x=>x.text()).then(words=>{
+		words = words.map(e=>e.split(","))
 		const filter = words.filter(e=>{
 			const bool = false;
 			for (let i in e) {
@@ -13,7 +14,7 @@ try {
 		};
 		document.getElementById("gameover").style = "display:none;";
 		function isSpellingValid() {
-			if (document.getElementById("yourspelling").value.toLowerCase() == data.currentWord) {
+			if (data.currentWord.has(document.getElementById("yourspelling").value.toLowerCase())) {
 				data.currentWord = filter[Math.floor(Math.random()*filter.length)]
 				document.getElementById("yourspelling").value = "";
 				data.score++;
@@ -40,7 +41,7 @@ try {
 		}
 		function update() {
 			document.getElementById("score").innerText = `Score: ${data.score}`
-			document.getElementById("word").innerText = `Your word: ${data.currentWord}`
+			document.getElementById("word").innerText = `Your word: ${data.currentWord[0]}`
 			if (document.getElementById("yourspelling").value == "") {
 				document.getElementById("enter").disabled = true
 			} else {

@@ -1,17 +1,18 @@
 try {
 	fetch("words.txt").then(x=>x.text()).then(words=>{
 		words = words.split("\n").map(e=>e.split(","))
-		const filter = words.filter(e=>{
+		const data = {
+			currentWord: [],
+			score: 0
+		};
+		var filter = words.filter(e=>{
 			var bool = false;
 			for (let i in e) {
-				bool = e[i].length <= (score/25)**0.35+4 || bool
+				bool = e[i].length <= (data.score/25)**0.35+4 || bool
 			}
 			return bool
 		});
-		const k = {
-			currentWord: filter[Math.floor(Math.random()*filter.length)],
-			score: 0
-		};
+		data.currentWord = filter[Math.floor(Math.random()*filter.length)]
 		document.getElementById("gameover").style = "display:none;";
 		function isSpellingValid() {
 			if (data.currentWord.has(document.getElementById("yourspelling").value.toLowerCase())) {

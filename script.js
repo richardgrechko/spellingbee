@@ -1,6 +1,6 @@
 try {
 	fetch("words.txt").then(x=>x.text()).then(words=>{
-		words = words.map(e=>e.split(","))
+		words = words.split("\n").map(e=>e.split(","))
 		const filter = words.filter(e=>{
 			const bool = false;
 			for (let i in e) {

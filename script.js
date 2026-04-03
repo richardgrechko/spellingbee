@@ -42,4 +42,6 @@ try {
 		document.getElementById("retry").addEventListener("click",retry);
 		setInterval(update,0)
 	})
+} catch (e) {
+	document.getElementById("yourspelling").value = "An error occurred";
 }

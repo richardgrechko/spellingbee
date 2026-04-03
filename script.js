@@ -1,15 +1,29 @@
 try {
 	fetch("words.txt").then(x=>x.text().split(",")).then(words=>{
+		const filter = words.filter(e=>{
+			const bool = false;
+			for (let i in e) {
+				bool = e[i].length <= (score/25)**0.35+4 || bool
+			}
+			return bool
+		});
 		const k = {
-			currentWord: words[Math.floor(Math.random()*words.length)],
+			currentWord: filter[Math.floor(Math.random()*filter.length)],
 			score: 0
 		};
 		document.getElementById("gameover").style = "display:none;";
 		function isSpellingValid() {
 			if (document.getElementById("yourspelling").value.toLowerCase() == data.currentWord) {
-				data.currentWord = words[Math.floor(Math.random()*words.length)]
+				data.currentWord = filter[Math.floor(Math.random()*filter.length)]
 				document.getElementById("yourspelling").value = "";
 				data.score++;
+				filter = words.filter(e=>{
+					const bool = false;
+					for (let i in e) {
+						bool = e[i].length <= (score/25)**0.35+4 || bool
+					}
+					return bool
+				});
 				document.getElementById("word").style = `filter: blur(${Math.sqrt(data.score)*0.5}px);`
 			} else {
 				document.getElementById("app").style = "display:none;";
@@ -20,7 +34,7 @@ try {
 			document.getElementById("app").style = "display:flex;";
 			document.getElementById("gameover").style = "display:none;";
 			data.score = 0;
-			data.currentWord = words[Math.floor(Math.random()*words.length)];
+			data.currentWord = filter[Math.floor(Math.random()*filter.length)];
 			document.getElementById("word").style = `filter: blur(0);`
 			document.getElementById("yourspelling").value = "";
 		}

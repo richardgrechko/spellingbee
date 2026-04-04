@@ -15,7 +15,7 @@ try {
 		data.currentWord = filter[Math.floor(Math.random()*filter.length)]
 		document.getElementById("gameover").style = "display:none;";
 		function isSpellingValid() {
-			if (data.currentWord.has(document.getElementById("yourspelling").value.toLowerCase())) {
+			if (data.currentWord.contains(document.getElementById("yourspelling").value.toLowerCase())) {
 				data.currentWord = filter[Math.floor(Math.random()*filter.length)]
 				document.getElementById("yourspelling").value = "";
 				data.score++;
